@@ -18,7 +18,7 @@ java RelativeBalanceTest
 java RelativeBalanceRelease data/test.csv;
 ```
 
-Then use the following inputs as paramters:
+Then use the following inputs as parameters:
 
 - accountId:
   + ACC334455
@@ -27,7 +27,6 @@ Then use the following inputs as paramters:
 - to:
   + 20/10/2018 17:00:00
 
-```
 This lightweight ETL programming will quickly calculate the relative balance any csv of the form 
 
 ```csv
