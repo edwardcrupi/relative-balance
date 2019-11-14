@@ -24,17 +24,10 @@ public class RelativeBalance {
                     .matcher(content);
         while (m.find()) {
           System.out.println(m.group()+ " was reversed");
-          allMatches.add(m.group());
+          allMatches.add(m.group().trim());
         }
-        int i = 0;
-        
-        // Ignore all reversed transactions
-        for(String reversal : allMatches){
-          content = content.replaceAll("(?m)^"+reversal+".*", "");
-          i++;
-        }
+
         System.out.println("Removed " + allMatches.size() + " transactions");
-        
         // Calculate relative balance for date range over remaining transactions
         double runningTotal = 0.0;
         int includedTransactions = 0;
@@ -42,9 +35,11 @@ public class RelativeBalance {
         scanner.nextLine();
         while (scanner.hasNextLine()) {
           String[] lines = scanner.nextLine().split(",");
-          // Ignore reversal transactions
+          
+          // Ignore reversed transactions
           String paymentType = lines[5].trim();
-          if(paymentType.equalsIgnoreCase("REVERSAL")){
+          String transactionNumber = lines[0].trim();
+          if(paymentType.indexOf('R')>-1 || allMatches.stream().anyMatch(transactionNumber::equalsIgnoreCase)){
             continue;
           }
           String dateString = lines[3].trim();
