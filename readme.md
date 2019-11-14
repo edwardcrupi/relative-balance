@@ -1,12 +1,12 @@
-# RelativeBalancer
+# RelativeBalancer (Requires Java 11)
 
 ## Build
-
+In the console open the top level directory and run this command with a java SDK of 11 or higher
 ```shell
 javac -cp . RelativeBalanceTest.java RelativeBalanceRelease.java
 ```
 
-## Run Tests
+## Run Tests 
 
 ```shell
 java RelativeBalanceTest
