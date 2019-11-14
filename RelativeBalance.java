@@ -42,6 +42,11 @@ public class RelativeBalance {
         scanner.nextLine();
         while (scanner.hasNextLine()) {
           String[] lines = scanner.nextLine().split(",");
+          // Ignore reversal transactions
+          String paymentType = lines[5].trim();
+          if(paymentType.equalsIgnoreCase("REVERSAL")){
+            continue;
+          }
           String dateString = lines[3].trim();
           Date date=formatter.parse(dateString);
           String debitAccount = lines[1].trim();
